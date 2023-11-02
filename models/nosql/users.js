@@ -1,4 +1,5 @@
 const mongoose = require("mongoose")
+const mongooseDelete = require("mongoose-delete")
 
 const UserScheme = new mongoose.Schema(
     {
@@ -25,5 +26,7 @@ const UserScheme = new mongoose.Schema(
         versionKey:false
     }
 )
+
+UserScheme.plugin(mongooseDelete, {overrideMethods: "all"}) //añadir el soft delete, y sobreescribir los metodos nuevos sobre los nativos de mongoose
 
 module.exports = mongoose.model("users", UserScheme)
