@@ -14,7 +14,8 @@ const UserScheme = new mongoose.Schema(
             unique:true
         },
         password:{
-            type:String
+            type:String,
+            select:false //quitar la contraseña
         },
         role:{
             type:["user", "admin"],
